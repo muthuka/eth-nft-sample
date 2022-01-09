@@ -9,6 +9,7 @@
   "author": "Muthu Arumugam",
   "license": "ISC",
   "devDependencies": {
+    "@alch/alchemy-web3": "^1.1.9",
     "@nomiclabs/hardhat-ethers": "^2.0.4",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "chai": "^4.3.4",
