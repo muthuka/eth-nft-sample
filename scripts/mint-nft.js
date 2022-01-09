@@ -9,12 +9,12 @@ const web3 = createAlchemyWeb3(API_URL);
 console.log("Connected with", API_URL);
 
 // Let's see the contract ABI json
-const contract = require("../artifacts/contracts/MKNFT.sol/MKNFT.json")
+const contract = require("../artifacts/contracts/MKNFT2.sol/MKNFT2.json")
 // console.log(JSON.stringify(contract.abi))
 
 // Let's mint. Before this step, I deployed the main contract and filled it as the address
 // npx hardhat --network ropsten run scripts/deploy.js
-const contractAddress = "0x69d0c44D4C7D2b0D07caf29928B29eb7AA38C1aA"
+const contractAddress = "0x452fc0C02FaaE4c45B6ab7f54dA8cb1F6128Dca0"
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
 
 async function mintNFT(tokenURI) {
@@ -57,4 +57,4 @@ async function mintNFT(tokenURI) {
 }
 
 // Let's do it!
-mintNFT("https://gateway.pinata.cloud/ipfs/QmT3NMEGtU3dATRkC4sekVymrUSkXTNphmPfHGjvDvQYZi");
+mintNFT("https://gateway.pinata.cloud/ipfs/QmbT9ATdHn8L6p9Ajde1LkD2LxTqBoWzP9jAT1Wy6nNzPb");

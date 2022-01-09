@@ -7,16 +7,17 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-contract MKNFT is ERC721URIStorage, Ownable {
+contract MKNFT2 is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
-    constructor() public ERC721("MKNFT", "MKNFT1") {}
+    constructor() public ERC721("MKNFT2", "MKNFT2") {}
 
     function mintNFT(address recipient, string memory tokenURI)
         public onlyOwner
         returns (uint256)
     {
+        require(_tokenIds.current() < 3);
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
