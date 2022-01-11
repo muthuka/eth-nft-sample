@@ -1,5 +1,5 @@
 async function main() {
-    const MyNFT = await ethers.getContractFactory("MKNFT2")
+    const MyNFT = await ethers.getContractFactory("MKNFT4")
   
     // Start deployment, returning a promise that resolves to a contract object
     const myNFT = await MyNFT.deploy()
