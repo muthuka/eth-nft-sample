@@ -7,7 +7,7 @@ This project demonstrates a basic NFT contract and minting process. It involves 
 You need to create a .env file with the following setup.
 
 ```text
-API_URL="https://eth-ropsten.alchemyapi.io/v2/REPLACE-API-KEY"
+ROPSTEN_API_URL="https://eth-ropsten.alchemyapi.io/v2/REPLACE-API-KEY"
 PRIVATE_KEY="REPLACE-PRIVATE-KEY"
 PUBLIC_KEY="REPLACE-PUBLIC-KEY"
 ```
@@ -18,6 +18,12 @@ Once done, the following commands will help you run
 npm install
 npx hardhat compile
 npx hardhat --network ropsten run scripts/deploy.js
+```
+
+Based on the network chosen, please make sure that the code points to the right API_URL in mint-nft.js
+
+```js
+const API_URL = process.env.KOVAN_API_URL
 ```
 
 ## Tutorials used

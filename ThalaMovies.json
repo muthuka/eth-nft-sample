@@ -1,0 +1,21 @@
+[{
+        "attributes": [{
+            "trait_type": "Language",
+            "value": "Tamil"
+        }],
+        "description": "En Veedu En Kanavar is Ajith first movie and he acted as a child actor.",
+        "image": "https://www.filmiforest.com/img/poster_image/en-veedu-en-kanavar_1216957127.jpg",
+        "name": "En veedu en kanavar"
+    },
+
+
+    {
+        "attributes": [{
+            "trait_type": "Language",
+            "value": "Tamil"
+        }],
+        "description": "Amaravathi",
+        "image": "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/1c623baf2229ea8af409857b11d38c635973b3cc5310ae47e7951973ab45205a._UY500_UX667_RI_V_TTW_.jpg",
+        "name": "Amaravathi"
+    }
+]

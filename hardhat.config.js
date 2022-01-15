@@ -12,7 +12,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
-const { API_URL, PRIVATE_KEY } = process.env;
+const { ROPSTEN_API_URL, KOVAN_API_URL, PRIVATE_KEY } = process.env;
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
@@ -26,7 +26,11 @@ module.exports = {
   networks: {
     hardhat: {},
     ropsten: {
-      url: API_URL,
+      url: ROPSTEN_API_URL,
+      accounts: [`0x${PRIVATE_KEY}`]
+    },
+    kovan: {
+      url: KOVAN_API_URL,
       accounts: [`0x${PRIVATE_KEY}`]
     }
   },
