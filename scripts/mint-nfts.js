@@ -19,7 +19,7 @@ const contract = require("../artifacts/contracts/ThalaMovies.sol/ThalaMovies.jso
 
 // Let's mint. Before this step, I deployed the main contract and filled it as the address
 // npx hardhat --network ropsten run scripts/deploy.js
-const contractAddress = "0x60109649c4A94736b11c09B921dA365322Df5877" // For Ajith Movies
+const contractAddress = "0x3713B45f78E583eB3E5CcC27E9a82C3a67379747" // For Ajith Movies
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
 
 async function mintNFT(tokenURI) {
@@ -62,7 +62,7 @@ async function main() {
         for (let index = 0; index < movies.length; index++) {
             // Get num of each fruit
             console.log(index + ". Minting " + movies[index]["name"] + " with " + movies[index]["jsonHash"]);
-            await mintNFT(movies[index]["jsonHash"]);
+            await mintNFT("https://gateway.pinata.cloud/ipfs/" + movies[index]["jsonHash"]);
         }
 
         console.log('End')
