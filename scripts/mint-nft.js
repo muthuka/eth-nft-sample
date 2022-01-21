@@ -10,7 +10,7 @@ const web3 = createAlchemyWeb3(API_URL);
 console.log("Connected with", API_URL);
 
 // Let's see the contract ABI json
-const contract = require("../artifacts/contracts/ThalaMovies.sol/ThalaMovies.json")
+const contract = require("../artifacts/contracts/MKNFT6.sol/MKNFT6.json")
 // const contract = require("../artifacts/contracts/MKNFT4.sol/MKNFT4.json")
 // console.log(JSON.stringify(contract.abi))
 
@@ -18,7 +18,8 @@ const contract = require("../artifacts/contracts/ThalaMovies.sol/ThalaMovies.jso
 // npx hardhat --network ropsten run scripts/deploy.js
 // const contractAddress = "0x452fc0C02FaaE4c45B6ab7f54dA8cb1F6128Dca0" // For NFT3
 // const contractAddress = "0x74Af7b8BfB7836e0BC30545ec25A9401a4071AA5" // For NFT4
-const contractAddress = "0xbdE7230996265CEc10A49658AC8e5E209aB9eABA" // For Ajith Movies
+// const contractAddress = "0xbdE7230996265CEc10A49658AC8e5E209aB9eABA" // For Ajith Movies
+const contractAddress = "0x30C324E895d80Ce9e379290D7D5751e5cA98c090" // For NFT6
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
 
 async function mintNFT(tokenURI) {
