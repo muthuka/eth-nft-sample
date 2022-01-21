@@ -19,7 +19,7 @@ const contract = require("../artifacts/contracts/ThalaMovies.sol/ThalaMovies.jso
 
 // Let's mint. Before this step, I deployed the main contract and filled it as the address
 // npx hardhat --network ropsten run scripts/deploy.js
-const contractAddress = "0x3713B45f78E583eB3E5CcC27E9a82C3a67379747" // For Ajith Movies
+const contractAddress = "0x9c3cc59426537726bCB9278B0bCcC24bFA271441" // For Ajith Movies
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
 
 async function mintNFT(tokenURI) {
@@ -30,7 +30,7 @@ async function mintNFT(tokenURI) {
         'from': PUBLIC_KEY,
         'to': contractAddress,
         'nonce': nonce,
-        'gas': 500000,
+        'gas': 5000000,
         'data': nftContract.methods.mintNFT(PUBLIC_KEY, tokenURI).encodeABI()
     };
 

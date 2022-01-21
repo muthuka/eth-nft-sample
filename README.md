@@ -10,6 +10,7 @@ You need to create a .env file with the following setup.
 ROPSTEN_API_URL="https://eth-ropsten.alchemyapi.io/v2/REPLACE-API-KEY"
 PRIVATE_KEY="REPLACE-PRIVATE-KEY"
 PUBLIC_KEY="REPLACE-PUBLIC-KEY"
+ETHERSCAN_API_KEY="YOUR-API-KEY"
 ```
 
 Once done, the following commands will help you run
@@ -18,7 +19,10 @@ Once done, the following commands will help you run
 npm install
 npx hardhat compile
 npx hardhat --network ropsten run scripts/deploy.js
+npx hardhat verify --network ropsten YOUR_CONTRACT_ADDRESS
 ```
+
+The last command helps you to submit the flattened contract to Etherscan for future ABI extract features.
 
 Based on the network chosen, please make sure that the code points to the right API_URL in mint-nft.js
 

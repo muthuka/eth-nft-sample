@@ -17,7 +17,7 @@ contract ThalaMovies is ERC721URIStorage, Ownable {
         public onlyOwner
         returns (uint256)
     {
-        require(_tokenIds.current() <= 80);
+        // require(_tokenIds.current() <= 80);
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
