@@ -21,7 +21,7 @@ const contract = require("../artifacts/contracts/MKNFT7.sol/MKNFT7.json")
 const contractAddress = "0x3cBd6215216A3B654a6A2F564408435c568086F6" // For MKNFT7
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
 
-async function transferNFT(toAddress, tokenIndex, count) {
+const transferNFT = async (toAddress, tokenIndex, count) => {
     const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, 'latest'); //get latest nonce
 
     //the transaction
@@ -29,37 +29,18 @@ async function transferNFT(toAddress, tokenIndex, count) {
         'from': PUBLIC_KEY,
         'to': contractAddress,
         'nonce': nonce,
-        'gas': 500000,
+        'gas': 100000,
         'data': nftContract.methods.safeTransferFrom(PUBLIC_KEY, toAddress, tokenIndex, count, "0x0").encodeABI()
     };
 
-    const signPromise = web3.eth.accounts.signTransaction(tx, PRIVATE_KEY)
-    console.log("Signed transaction");
-    signPromise
-        .then((signedTx) => {
-            web3.eth.sendSignedTransaction(
-                signedTx.rawTransaction,
-                function (err, hash) {
-                    if (!err) {
-                        console.log(
-                            "The hash of your transaction is: ",
-                            hash,
-                            "\nCheck Alchemy's Mempool to view the status of your transaction!"
-                        )
-                    } else {
-                        console.log(
-                            "Something went wrong when submitting your transaction:",
-                            err
-                        )
-                    }
-                }
-            )
-        })
-        .catch((err) => {
-            console.log(" Promise failed:", err)
-        })
+    const signedTx = await web3.eth.accounts.signTransaction(tx, PRIVATE_KEY);
+    const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
+    console.log(`Transaction hash: ${receipt.transactionHash}`);
+
+    console.log(`From account balance: ${await nftContract.methods.balanceOf(PUBLIC_KEY, tokenIndex).call()}`);
+    console.log(`To account balance: ${await nftContract.methods.balanceOf(toAddress, tokenIndex).call()}`);
 }
 
 // Let's do it!
-transferNFT("0x08a2C83F6acDB9ffC55A177a8749B7eD8221f74f", 0, 3500);
+transferNFT("0x1f5A7058cc1230c7C1D3c34EF26B2d00156869f5", 4, 5000);
 // transferNFT("0x08a2C83F6acDB9ffC55A177a8749B7eD8221f74f", 2, 1);

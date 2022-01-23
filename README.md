@@ -1,6 +1,6 @@
 # NFT Sample
 
-This project demonstrates a basic NFT contract and minting process. It involves a simple contract implemented using Open Zeppelin and also minting it from a Ropsten network. I used the tutorials to create this and also hardhat for development.
+This project demonstrates a basic NFT contract and minting process. It involves a simple contract implemented using Open Zeppelin and also minting it from a Ropsten network. I used the tutorials to create this and also hardhat for development. This sample code showcases both ERC-721 & ERC-1155.
 
 ## Setup
 
@@ -20,6 +20,7 @@ npm install
 npx hardhat compile
 npx hardhat --network ropsten run scripts/deploy.js
 node scripts/mint-721.js -- To mint a new NFT on the specified contract
+node scripts/transfer-1155.js - To transfer any item in a ERC-1155 contract
 npx hardhat verify --network ropsten YOUR_CONTRACT_ADDRESS
 ```
 
