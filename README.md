@@ -19,6 +19,7 @@ Once done, the following commands will help you run
 npm install
 npx hardhat compile
 npx hardhat --network ropsten run scripts/deploy.js
+node scripts/mint-721.js -- To mint a new NFT on the specified contract
 npx hardhat verify --network ropsten YOUR_CONTRACT_ADDRESS
 ```
 
@@ -27,7 +28,7 @@ The last command helps you to submit the flattened contract to Etherscan for fut
 Based on the network chosen, please make sure that the code points to the right API_URL in mint-nft.js
 
 ```js
-const API_URL = process.env.KOVAN_API_URL
+const API_URL = process.env.ROPSTEN_API_URL
 ```
 
 ## Tutorials used
@@ -35,3 +36,5 @@ const API_URL = process.env.KOVAN_API_URL
 * <https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/>
 * <https://ethereum.org/en/developers/tutorials/how-to-mint-an-nft/>
 * <https://ethereum.org/en/developers/tutorials/how-to-view-nft-in-metamask/>
+* <https://docs.openzeppelin.com/contracts/4.x/erc721>
+* <https://docs.openzeppelin.com/contracts/4.x/erc1155>
