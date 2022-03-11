@@ -13,14 +13,21 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
-const { ROPSTEN_API_URL, KOVAN_API_URL, PRIVATE_KEY, ETHERSCAN_API_KEY } = process.env;
+const {
+  MUMBAI_API_URL,
+  ROPSTEN_API_URL,
+  KOVAN_API_URL,
+  PRIVATE_KEY,
+  ETHERSCAN_API_KEY,
+  POLYGONSCAN_API_KEY
+} = process.env;
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
   solidity: "0.8.4",
-  defaultNetwork: "ropsten",
+  defaultNetwork: "mumbai",
   networks: {
     hardhat: {},
     ropsten: {
@@ -30,11 +37,24 @@ module.exports = {
     kovan: {
       url: KOVAN_API_URL,
       accounts: [`0x${PRIVATE_KEY}`]
+    },
+    mumbai: {
+      url: MUMBAI_API_URL,
+      accounts: [`0x${PRIVATE_KEY}`],
+      gasPrice: 8000000000
     }
   },
   etherscan: {
-    // Your API key for Etherscan
-    // Obtain one at https://etherscan.io/
-    apiKey: ETHERSCAN_API_KEY
+    apiKey: {
+      //ethereum
+      mainnet: ETHERSCAN_API_KEY,
+      ropsten: ETHERSCAN_API_KEY,
+      rinkeby: ETHERSCAN_API_KEY,
+      goerli: ETHERSCAN_API_KEY,
+      kovan: ETHERSCAN_API_KEY,
+      //polygon
+      polygon: POLYGONSCAN_API_KEY,
+      polygonMumbai: POLYGONSCAN_API_KEY
+    }
   },
 };

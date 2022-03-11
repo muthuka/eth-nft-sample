@@ -2,7 +2,7 @@
 // JSON format
 require("dotenv").config()
 
-const API_URL = process.env.ROPSTEN_API_URL
+const API_URL = process.env.MUMBAI_API_URL
 const PUBLIC_KEY = process.env.PUBLIC_KEY;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
@@ -14,12 +14,12 @@ const web3 = createAlchemyWeb3(API_URL);
 console.log("Connected with", API_URL);
 
 // Let's see the contract ABI json
-const contract = require("../artifacts/contracts/ThalaMovies.sol/ThalaMovies.json")
+const contract = require("../artifacts/contracts/TESTNFT1.sol/TESTNFT1.json")
 // console.log(JSON.stringify(contract.abi))
 
 // Let's mint. Before this step, I deployed the main contract and filled it as the address
 // npx hardhat --network ropsten run scripts/deploy.js
-const contractAddress = "0x9c3cc59426537726bCB9278B0bCcC24bFA271441" // For Ajith Movies
+const contractAddress = "0xbC8d63dbab5062ee03e600Cd256DFb407eC437eb" // For Ajith Movies
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
 
 async function mintNFT(tokenURI) {
@@ -53,7 +53,7 @@ async function mintNFT(tokenURI) {
 async function main() {
 
     const fs = require('fs');
-    let rawdata = fs.readFileSync('./ThalaMovies.json');
+    let rawdata = fs.readFileSync('./json/ThalaMovies.json');
     let movies = JSON.parse(rawdata);
 
     const forLoop = async _ => {
