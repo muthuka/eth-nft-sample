@@ -9,10 +9,16 @@ You need to create a .env file with the following setup.
 ```text
 ROPSTEN_API_URL="https://eth-ropsten.alchemyapi.io/v2/REPLACE-API-KEY"
 MUMBAI_API_URL="https://polygon-mumbai.g.alchemy.com/v2/REPLACE-API-KEY"
+ARBITRUM_API_URL="https://arb-rinkeby.g.alchemy.com/v2/REPLACE-API-KEY"
+OPTIMISM_API_URL="https://opt-kovan.g.alchemy.com/v2/REPLACE-API-KEY"
+
 PRIVATE_KEY="REPLACE-PRIVATE-KEY"
 PUBLIC_KEY="REPLACE-PUBLIC-KEY"
+
 ETHERSCAN_API_KEY="YOUR-API-KEY" // From Etherscan
 POLYGONSCAN_API_KEY="YOUR-API-KEY" // From Polyscan
+ARBISCAN_API_KEY="YOUR-API-KEY" // From Arbiscan
+OPTISCAN_API_KEY="YOUR-API-KEY" // From Optimism
 ```
 
 Once done, the following commands will help you run
