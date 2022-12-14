@@ -25,10 +25,11 @@ const contract = require("../artifacts/contracts/CLIFTY2.sol/CLIFTY2.json");
 // const contractAddress = "0x207c51588faf5Ee476348Fa5b8b5F3Dc05C7B911" // For something
 // const contractAddress = "0x829d556Bf20042A236B31b63FF51EfB6433F8674" // For Goerli
 // const contractAddress = "0xAFB897d13E703Ac1c458cDb6CB15F96Ee8eA4C02" // New Clifty in Goerli
-const contractAddress = "0xeE79A303d85C4dFbbBbDE5430a72945AF7C30aB2"; // New Clifty 1000+ tokens
+// const contractAddress = "0xeE79A303d85C4dFbbBbDE5430a72945AF7C30aB2"; // New Clifty 1000+ tokens
+const contractAddress = "0x9530A1Cc9B03bc856CA59BF072181e917fB2b6B1"; // New Clifty 1000+ tokens
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
-async function mintNFT(tokenURI) {
+async function createNFT(to, tokenURI) {
     const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, "latest"); //get latest nonce
     console.log("Running nonce", nonce);
 
@@ -38,15 +39,13 @@ async function mintNFT(tokenURI) {
         to: contractAddress,
         nonce: nonce,
         gas: 500000,
-        data: nftContract.methods
-            .mintNFT("0x5F97421292a4eAa6266677582f849972eCc84a84", tokenURI)
-            .encodeABI(),
+        data: nftContract.methods.mintNFT(to, tokenURI).encodeABI(),
     };
 
     const signed = await web3.eth.accounts
         .signTransaction(tx, PRIVATE_KEY)
         .then((signedTx) => signedTx.rawTransaction);
-    // console.log("Signed with " + signed);
+    console.log("Signed with " + signed);
 
     await web3.eth.sendSignedTransaction(signed, function (err, hash) {
         if (!err) {
@@ -60,6 +59,7 @@ async function mintNFT(tokenURI) {
 // Let's do it!
 // mintNFT("ipfs://QmYHnhJWh9znfFrUZPh7FcC5goDcbUVWUQ6NG6nmZQmEov");
 // mintNFT("https://gateway.pinata.cloud/ipfs/QmbT9ATdHn8L6p9Ajde1LkD2LxTqBoWzP9jAT1Wy6nNzPb");
-mintNFT(
+createNFT(
+    "0x5F97421292a4eAa6266677582f849972eCc84a84",
     "https://asset.clifty.io/ipfs/QmdZmax6C6Yg7a2eaCp54Qxz4dbG5xY1ySyPn9hAy4zc7p"
 );
