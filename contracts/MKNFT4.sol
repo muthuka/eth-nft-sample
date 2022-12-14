@@ -11,10 +11,11 @@ contract MKNFT4 is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
-    constructor() public ERC721("MK Token4 for NFT", "MKNFT4") {}
+    constructor() ERC721("MK Token4 for NFT", "MKNFT4") {}
 
     function mintNFT(address recipient, string memory tokenURI)
-        public onlyOwner
+        public
+        onlyOwner
         returns (uint256)
     {
         require(_tokenIds.current() <= 10);
