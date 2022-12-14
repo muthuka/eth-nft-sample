@@ -10,3 +10,6 @@ artifacts
 .vscode/
 build/
 finalThala.sol
+
+# Remix IDE
+.deps/

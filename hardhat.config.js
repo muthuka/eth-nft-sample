@@ -16,6 +16,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 const {
   MUMBAI_API_URL,
   ROPSTEN_API_URL,
+  GOERLI_API_URL,
   ARBITRUM_API_URL,
   OPTIMISM_API_URL,
   KOVAN_API_URL,
@@ -31,11 +32,15 @@ const {
  */
 module.exports = {
   solidity: "0.8.4",
-  defaultNetwork: "mumbai",
+  defaultNetwork: "goerli",
   networks: {
     hardhat: {},
     ropsten: {
       url: ROPSTEN_API_URL,
+      accounts: [`0x${PRIVATE_KEY}`]
+    },
+    goerli: {
+      url: GOERLI_API_URL,
       accounts: [`0x${PRIVATE_KEY}`]
     },
     kovan: {
