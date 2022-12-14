@@ -12,20 +12,9 @@ console.log("Connected with", API_URL);
 
 // Let's see the contract ABI json
 const contract = require("../artifacts/contracts/CLIFTY2.sol/CLIFTY2.json");
-// const contract = require("../artifacts/contracts/MKNFT4.sol/MKNFT4.json")
 // console.log(JSON.stringify(contract.abi))
 
 // Let's mint. Before this step, I deployed the main contract and filled it as the address
-// npx hardhat --network ropsten run scripts/deploy.js
-// const contractAddress = "0x452fc0C02FaaE4c45B6ab7f54dA8cb1F6128Dca0" // For NFT3
-// const contractAddress = "0x74Af7b8BfB7836e0BC30545ec25A9401a4071AA5" // For NFT4
-// const contractAddress = "0xbdE7230996265CEc10A49658AC8e5E209aB9eABA" // For Ajith Movies
-// const contractAddress = "0x30C324E895d80Ce9e379290D7D5751e5cA98c090" // For NFT6
-// const contractAddress = "0x1dFa2475AbAac10b611A5015420D72E165F5ede6" // For TestNFT1
-// const contractAddress = "0x207c51588faf5Ee476348Fa5b8b5F3Dc05C7B911" // For something
-// const contractAddress = "0x829d556Bf20042A236B31b63FF51EfB6433F8674" // For Goerli
-// const contractAddress = "0xAFB897d13E703Ac1c458cDb6CB15F96Ee8eA4C02" // New Clifty in Goerli
-// const contractAddress = "0xeE79A303d85C4dFbbBbDE5430a72945AF7C30aB2"; // New Clifty 1000+ tokens
 const contractAddress = "0x9530A1Cc9B03bc856CA59BF072181e917fB2b6B1"; // New Clifty 1000+ tokens
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 

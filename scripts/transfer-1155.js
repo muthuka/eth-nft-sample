@@ -4,7 +4,7 @@
 
 require("dotenv").config();
 
-const API_URL = process.env.ROPSTEN_API_URL;
+const API_URL = process.env.GOERLI_API_URL;
 const PUBLIC_KEY = process.env.PUBLIC_KEY;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
@@ -18,7 +18,7 @@ const contract = require("../artifacts/contracts/MKNFT7.sol/MKNFT7.json");
 // console.log(JSON.stringify(contract.abi))
 
 // Let's mint. Before this step, I deployed the main contract and filled it as the address
-// npx hardhat --network ropsten run scripts/deploy.js
+// npx hardhat --network goerli run scripts/deploy.js
 const contractAddress = "0x3cBd6215216A3B654a6A2F564408435c568086F6"; // For MKNFT7
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 

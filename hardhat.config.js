@@ -17,7 +17,6 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 
 const {
     MUMBAI_API_URL,
-    ROPSTEN_API_URL,
     GOERLI_API_URL,
     ARBITRUM_API_URL,
     OPTIMISM_API_URL,
@@ -37,10 +36,6 @@ module.exports = {
     defaultNetwork: "goerli",
     networks: {
         hardhat: {},
-        ropsten: {
-            url: ROPSTEN_API_URL,
-            accounts: [`0x${PRIVATE_KEY}`],
-        },
         goerli: {
             url: GOERLI_API_URL,
             accounts: [`0x${PRIVATE_KEY}`],
@@ -69,7 +64,6 @@ module.exports = {
         apiKey: {
             //ethereum
             mainnet: ETHERSCAN_API_KEY,
-            ropsten: ETHERSCAN_API_KEY,
             rinkeby: ETHERSCAN_API_KEY,
             goerli: ETHERSCAN_API_KEY,
             kovan: ETHERSCAN_API_KEY,

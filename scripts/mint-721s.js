@@ -18,7 +18,7 @@ const contract = require("../artifacts/contracts/ThalaMovies.sol/ThalaMovies.jso
 // console.log(JSON.stringify(contract.abi))
 
 // Let's mint. Before this step, I deployed the main contract and filled it as the address
-// npx hardhat --network ropsten run scripts/deploy.js
+// npx hardhat --network goerli run scripts/deploy.js
 // const contractAddress = "0x1dFa2475AbAac10b611A5015420D72E165F5ede6" // For Ajith Movies
 const contractAddress = "0x61718227C0E05B660821c958Cf3BDc71bD85C626"; // For Ajith Movies
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
