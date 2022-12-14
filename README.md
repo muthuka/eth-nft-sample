@@ -26,7 +26,7 @@ Once done, the following commands will help you run
 ```bash
 npm install
 npx hardhat compile
-npx hardhat --network goerli run scripts/deploy.js
+npx hardhat --network mumbai run scripts/deploy.js
 node scripts/mint-721.js -- To mint a new NFT on the specified contract
 node scripts/transfer-1155.js - To transfer any item in a ERC-1155 contract
 npx hardhat verify --network goerli YOUR_CONTRACT_ADDRESS

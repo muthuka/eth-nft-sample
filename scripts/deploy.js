@@ -1,7 +1,7 @@
 /* jshint esversion: 8 */
 
 async function main() {
-    const MyNFT = await ethers.getContractFactory("CLIFTY2");
+    const MyNFT = await ethers.getContractFactory("CLIFTY3");
 
     // Start deployment, returning a promise that resolves to a contract object
     const myNFT = await MyNFT.deploy();
