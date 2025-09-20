@@ -3,11 +3,9 @@
 pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract CLIFTY2 is ERC721URIStorage {
-    using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
+    uint256 private _tokenIds;
 
     constructor() ERC721("Clifty Inc.", "CLIFTY2") {}
 
@@ -15,13 +13,13 @@ contract CLIFTY2 is ERC721URIStorage {
         public
         returns (uint256)
     {
-        require(_tokenIds.current() <= 10000);
+        require(_tokenIds <= 10000);
 
-        uint256 newItemId = _tokenIds.current();
+        uint256 newItemId = _tokenIds;
         super._mint(recipient, newItemId);
         super._setTokenURI(newItemId, uri);
 
-        _tokenIds.increment();
+        _tokenIds++;
         return newItemId;
     }
 }

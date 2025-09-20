@@ -1,50 +1,117 @@
 # NFT Sample
 
-This project demonstrates a basic NFT contract and minting process. It involves a simple contract implemented using Open Zeppelin and also minting it from a Ethereum Goerli or Polygon Mumbai network. I used the tutorials to create this and also hardhat for development. This sample code showcases both ERC-721 & ERC-1155.
+This project demonstrates a comprehensive NFT contract and minting process. It includes multiple NFT contracts implemented using OpenZeppelin v5 and supports deployment on modern blockchain networks including Ethereum Sepolia, Polygon, Arbitrum, Optimism, and Base. Built with Hardhat for development, this sample code showcases both ERC-721 & ERC-1155 standards with comprehensive unit testing.
 
 ## Setup
 
 You need to create a .env file with the following setup.
 
 ```text
-GOERLI_API_URL="https://eth-goerli.alchemyapi.io/v2/REPLACE-API-KEY"
-MUMBAI_API_URL="https://polygon-mumbai.g.alchemy.com/v2/REPLACE-API-KEY"
-ARBITRUM_API_URL="https://arb-rinkeby.g.alchemy.com/v2/REPLACE-API-KEY"
-OPTIMISM_API_URL="https://opt-kovan.g.alchemy.com/v2/REPLACE-API-KEY"
+# Network RPC URLs
+SEPOLIA_API_URL="https://eth-sepolia.g.alchemy.com/v2/REPLACE-API-KEY"
+POLYGON_API_URL="https://polygon-mainnet.g.alchemy.com/v2/REPLACE-API-KEY"
+ARBITRUM_API_URL="https://arb-mainnet.g.alchemy.com/v2/REPLACE-API-KEY"
+OPTIMISM_API_URL="https://opt-mainnet.g.alchemy.com/v2/REPLACE-API-KEY"
+BASE_API_URL="https://base-mainnet.g.alchemy.com/v2/REPLACE-API-KEY"
 
+# Alchemy API Key (for Alchemy SDK)
+ALCHEMY_API_KEY="REPLACE-API-KEY"
+
+# Wallet Configuration
 PRIVATE_KEY="REPLACE-PRIVATE-KEY"
 PUBLIC_KEY="REPLACE-PUBLIC-KEY"
 
+# Block Explorer API Keys
 ETHERSCAN_API_KEY="YOUR-API-KEY" // From Etherscan
-POLYGONSCAN_API_KEY="YOUR-API-KEY" // From Polyscan
+POLYGONSCAN_API_KEY="YOUR-API-KEY" // From PolygonScan
 ARBISCAN_API_KEY="YOUR-API-KEY" // From Arbiscan
 OPTISCAN_API_KEY="YOUR-API-KEY" // From Optimism
+BASESCAN_API_KEY="YOUR-API-KEY" // From BaseScan
 ```
 
 Once done, the following commands will help you run
 
 ```bash
+# Install dependencies
 npm install
-npx hardhat compile
-npx hardhat --network mumbai run scripts/deploy.js
-node scripts/mint-721.js -- To mint a new NFT on the specified contract
-node scripts/transfer-1155.js - To transfer any item in a ERC-1155 contract
-npx hardhat verify --network goerli YOUR_CONTRACT_ADDRESS
+
+# Compile contracts
+npm run compile
+
+# Run tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Deploy to different networks
+npm run deploy:sepolia
+npm run deploy:polygon
+npm run deploy:arbitrum
+npm run deploy:optimism
+npm run deploy:base
+
+# Mint NFTs
+node scripts/mint-721.js
+node scripts/mint-721s.js
+
+# Transfer ERC-1155 tokens
+node scripts/transfer-1155.js
+
+# Verify contracts on block explorers
+npx hardhat verify --network sepolia YOUR_CONTRACT_ADDRESS
+npx hardhat verify --network polygon YOUR_CONTRACT_ADDRESS
 ```
 
-The last command helps you to submit the flattened contract to Etherscan for future ABI extract features.
+## Available Scripts
 
-Based on the network chosen, please make sure that the code points to the right API_URL in mint-nft.js
+- `npm test` - Run all unit tests
+- `npm run test:coverage` - Run tests with coverage report
+- `npm run compile` - Compile all contracts
+- `npm run deploy` - Deploy to local hardhat network
+- `npm run deploy:sepolia` - Deploy to Ethereum Sepolia testnet
+- `npm run deploy:polygon` - Deploy to Polygon mainnet
+- `npm run deploy:arbitrum` - Deploy to Arbitrum mainnet
+- `npm run deploy:optimism` - Deploy to Optimism mainnet
+- `npm run deploy:base` - Deploy to Base mainnet
 
-```js
-const API_URL = process.env.GOERLI_API_URL
-```
+## Contract Overview
 
-## Tutorials used
+This project includes multiple NFT contracts:
+
+### ERC-721 Contracts
+- **CLIFTY1**: Basic NFT with 10 token limit
+- **CLIFTY2**: NFT with 10,000 token limit  
+- **MKNFT2-6**: Various NFT contracts with different limits and features
+- **TestNFT1**: Test contract with 100 token limit
+- **ThalaMovies**: Movie-themed NFT collection
+
+### ERC-1155 Contract
+- **MKNFT7**: Multi-token contract with predefined token types (Gold, Silver, Thor's Hammer, Sword, Shield)
+
+## Features
+
+- ✅ Node.js 24.7.0 support
+- ✅ OpenZeppelin v5 compatibility
+- ✅ Modern blockchain network support (Sepolia, Polygon, Arbitrum, Optimism, Base)
+- ✅ Comprehensive unit testing with coverage
+- ✅ Alchemy SDK integration
+- ✅ Hardhat development environment
+- ✅ Ethers.js v6 support
+- ✅ TypeScript-ready configuration
+
+## Requirements
+
+- Node.js >= 24.7.0
+- npm or yarn package manager
+- Alchemy API key for blockchain interactions
+- Private key for deployment and transactions
+
+## Tutorials and Resources
 
 * <https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/>
 * <https://ethereum.org/en/developers/tutorials/how-to-mint-an-nft/>
-* <https://ethereum.org/en/developers/tutorials/how-to-view-nft-in-metamask/>
-* <https://docs.openzeppelin.com/contracts/4.x/erc721>
-* <https://docs.openzeppelin.com/contracts/4.x/erc1155>
-* <https://medium.com/geekculture/how-to-programmatically-deploy-and-mint-a-simple-nft-on-the-polygon-blockchain-88e1beede15d>
+* <https://docs.openzeppelin.com/contracts/5.x/erc721>
+* <https://docs.openzeppelin.com/contracts/5.x/erc1155>
+* <https://hardhat.org/docs>
+* <https://docs.alchemy.com/docs/alchemy-sdk-quickstart>

@@ -4,12 +4,16 @@
 
 require("dotenv").config();
 
-const API_URL = process.env.GOERLI_API_URL;
+const API_URL = process.env.SEPOLIA_API_URL;
 const PUBLIC_KEY = process.env.PUBLIC_KEY;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
-const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-const web3 = createAlchemyWeb3(API_URL);
+const { Alchemy, Network } = require("alchemy-sdk");
+const alchemy = new Alchemy({
+    apiKey: process.env.ALCHEMY_API_KEY,
+    network: Network.ETH_SEPOLIA,
+});
+const web3 = alchemy.core;
 
 console.log("Connected with", API_URL);
 
