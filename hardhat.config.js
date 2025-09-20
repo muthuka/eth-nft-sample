@@ -4,6 +4,7 @@ require("@nomicfoundation/hardhat-chai-matchers");
 require("dotenv").config();
 require("@nomicfoundation/hardhat-ethers");
 require("@nomicfoundation/hardhat-verify");
+require("solidity-coverage");
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -36,7 +37,10 @@ module.exports = {
     solidity: "0.8.20",
     defaultNetwork: "hardhat",
     networks: {
-        hardhat: {},
+        hardhat: {
+            loggingEnabled: true,
+            verbose: true,
+        },
         ...(SEPOLIA_API_URL && PRIVATE_KEY && {
             sepolia: {
                 url: SEPOLIA_API_URL,

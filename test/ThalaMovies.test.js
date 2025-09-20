@@ -69,7 +69,8 @@ describe("ThalaMovies", function () {
 
       expect(await thalaMovies.ownerOf(1)).to.equal(addr1.address);
       expect(await thalaMovies.ownerOf(2)).to.equal(addr2.address);
-      expect(await thalaMovies.balanceOf(addr1.address)).to.equal(2);
+      expect(await thalaMovies.balanceOf(addr1.address)).to.equal(1);
+      expect(await thalaMovies.balanceOf(addr2.address)).to.equal(1);
     });
 
     it("Should mint to different addresses", async function () {

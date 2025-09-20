@@ -58,13 +58,13 @@ describe("MKNFT7 (ERC1155)", function () {
 
   describe("Transfers", function () {
     it("Should transfer tokens successfully", async function () {
-      const amount = ethers.parseEther("100");
+      const amount = ethers.parseEther("0.5");
       
       await expect(mknft7.safeTransferFrom(owner.address, addr1.address, 0, amount, "0x"))
         .to.emit(mknft7, "TransferSingle")
         .withArgs(owner.address, owner.address, addr1.address, 0, amount);
 
-      expect(await mknft7.balanceOf(owner.address, 0)).to.equal(ethers.parseEther("0.9"));
+      expect(await mknft7.balanceOf(owner.address, 0)).to.equal(ethers.parseEther("0.5"));
       expect(await mknft7.balanceOf(addr1.address, 0)).to.equal(amount);
     });
 

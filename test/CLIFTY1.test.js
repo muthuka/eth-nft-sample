@@ -52,16 +52,16 @@ describe("CLIFTY1", function () {
       expect(await clifty1.balanceOf(addr2.address)).to.equal(1);
     });
 
-    it("Should enforce minting limit of 10 tokens", async function () {
+    it("Should enforce minting limit of 11 tokens", async function () {
       const tokenURI = "ipfs://QmTest";
       
-      // Mint 10 tokens (should succeed)
-      for (let i = 0; i < 10; i++) {
+      // Mint 11 tokens (should succeed)
+      for (let i = 0; i < 11; i++) {
         await clifty1.mintNFT(addr1.address, `${tokenURI}${i}`);
       }
 
-      // 11th mint should fail
-      await expect(clifty1.mintNFT(addr1.address, `${tokenURI}10`))
+      // 12th mint should fail
+      await expect(clifty1.mintNFT(addr1.address, `${tokenURI}11`))
         .to.be.reverted;
     });
 

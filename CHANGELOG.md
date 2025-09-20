@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.0.0] - 2024-12-20
+## [2.0.0] - 2025-09-20
 
 ### 🚀 Major Upgrades
 - **Node.js**: Upgraded from v18.12.1 to v24.7.0

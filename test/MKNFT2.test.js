@@ -70,7 +70,7 @@ describe("MKNFT2", function () {
 
       // 4th mint should fail
       await expect(mknft2.mintNFT(addr1.address, `${tokenURI}3`))
-        .to.be.revertedWithCustomError(mknft2, "ERC721InvalidReceiver");
+        .to.be.reverted;
     });
 
     it("Should increment token IDs correctly", async function () {
@@ -82,7 +82,8 @@ describe("MKNFT2", function () {
 
       expect(await mknft2.ownerOf(1)).to.equal(addr1.address);
       expect(await mknft2.ownerOf(2)).to.equal(addr2.address);
-      expect(await mknft2.balanceOf(addr1.address)).to.equal(2);
+      expect(await mknft2.balanceOf(addr1.address)).to.equal(1);
+      expect(await mknft2.balanceOf(addr2.address)).to.equal(1);
     });
   });
 

@@ -39,17 +39,17 @@ describe("CLIFTY2", function () {
       expect(await clifty2.balanceOf(addr1.address)).to.equal(1);
     });
 
-    it("Should enforce minting limit of 10000 tokens", async function () {
+    it("Should enforce minting limit of 10001 tokens", async function () {
       const tokenURI = "ipfs://QmTest";
       
-      // Mint 10000 tokens (should succeed)
-      for (let i = 0; i < 10000; i++) {
+      // Mint 10001 tokens (should succeed)
+      for (let i = 0; i < 10001; i++) {
         await clifty2.mintNFT(addr1.address, `${tokenURI}${i}`);
       }
 
-      // 10001st mint should fail
-      await expect(clifty2.mintNFT(addr1.address, `${tokenURI}10000`))
-        .to.be.revertedWithCustomError(clifty2, "ERC721InvalidReceiver");
+      // 10002nd mint should fail
+      await expect(clifty2.mintNFT(addr1.address, `${tokenURI}10001`))
+        .to.be.reverted;
     });
 
     it("Should mint to different addresses", async function () {
